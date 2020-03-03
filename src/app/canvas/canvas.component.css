@@ -1,0 +1,188 @@
+#countdown {
+    align-self: left;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+
+#countdown-number {
+    color: white;
+    display: inline-block;
+    line-height: 40px;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg circle {
+    stroke-dasharray: 113px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 2px;
+    stroke: white;
+    fill: none;
+    animation: countdown 60s linear infinite forwards;
+}
+
+@keyframes countdown {
+    from {
+        stroke-dashoffset: 0px;
+    }
+    to {
+        stroke-dashoffset: 113px;
+    }
+}
+
+.stats-container {
+    padding-top: 1vw;
+    margin-left: 7vw;
+    margin-right: 20vw;
+    display: flex;
+    min-height: 53px;
+    align-items: center;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: center;
+    margin-right: 1.5em;
+}
+
+#chat-container, #scores-container {
+    margin: 1em;
+}
+
+.currentWord {
+    margin-left: 29vw;
+    font-size: large;
+    font-weight: bold;
+    align-self: right;
+    color: white;
+}
+
+.messagebox {
+    height: 51vh;
+    width: 20vw;
+    overflow-x: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-all;
+    background-color: #FFF;
+    margin-bottom: 0.5em;
+    background: #F2F2F2;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #fff inset, -1px -1px 2px #fff inset;
+    border-radius: 3px/6px;
+    
+}
+
+.usersbox {
+    height: 68vh;
+    width: 20vw;
+    overflow-x: auto;
+    overflow-wrap: break-word;
+    background-color: #FFF;
+    margin-bottom: 0.5em;
+    background: #F2F2F2;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #fff inset, -1px -1px 2px #fff inset;
+    border-radius: 3px/6px;
+}
+
+.user {
+    min-height: 50px;
+    overflow-wrap: break-word;
+    padding: 0.6em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user:nth-child(even) {
+    background-color: rgb(193, 138, 245);
+}
+
+.user:nth-child(odd) {
+    background-color: bisque;
+}
+
+.userRow {
+    overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.username {
+    font-weight: 700;
+}
+
+.chatRelated {
+    color: darkgoldenrod;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+.correctGuess {
+    color: green;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+.wrongGuess {
+    color: black;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+
+#canvascontainer {
+    margin: 1em;
+    background-color: white;
+    width: 50%;
+    max-height: 68vh;
+    border-radius: 3px/6px;
+    position: relative;
+}
+
+#canvascontainer canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+#canvas-tools {
+    position: absolute;
+    bottom: 0;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(37, 37, 37, 0.8);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    color: white;
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.iconBtn {
+    border: 0;
+    height: 25px;
+    width: 25px;
+    background: none;
+    margin: 0.7em;
+}

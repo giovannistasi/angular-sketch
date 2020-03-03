@@ -1,0 +1,12 @@
+<div *ngIf="!loggedIn" class="landing">
+    
+    <img src="../../assets/icon.png" alt="">
+    
+    
+    <div class="login">
+        <input [(ngModel)]="name" placeholder="Choose a name" (keyup.enter)="logIn()"/>
+        <button class="btn btn-primary btn-block btn-large" (click)="logIn()">Play</button>
+    </div>
+</div>
+
+<app-canvas *ngIf="loggedIn" [name]="name"></app-canvas>

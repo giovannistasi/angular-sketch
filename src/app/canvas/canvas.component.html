@@ -1,0 +1,87 @@
+<div class="stats-container">
+
+
+    <div *ngIf="!overlay" id="countdown">
+        <div id="countdown-number">{{timeLeft}}</div>
+        <svg>
+          <circle r="18" cx="20" cy="20"></circle>
+        </svg>
+      </div>
+
+
+    <div class="currentWord" *ngIf="currentArtist">Your word is: {{currentWord.toUpperCase()}}</div>
+    <div></div>
+</div>
+<div id="wrapper">
+    <div id="scores-container">
+        <div class="usersbox">
+            <div *ngFor="let user of users" class="user">
+                <div>
+                    <div class="userRow">
+                        <div class="username">{{user.name}}</div>
+                        <div>Score: {{user.score}}</div>
+                    </div> 
+                </div>
+                <span *ngIf="user.currentArtist" class="pencilIcon">
+                    <fa-icon [icon]="pencilIcon"></fa-icon>
+                </span>
+            </div>
+        </div>
+        <div>
+            <fa-icon *ngIf="users.length === 1" [icon]="oneUserIcon"></fa-icon>
+            <fa-icon *ngIf="users.length === 2" [icon]="twoUsersIcon"></fa-icon>
+            <fa-icon *ngIf="users.length > 2" [icon]="threePlusUsersIcon"></fa-icon>
+            {{users.length}} {{users.length === 1 ? 'user' : 'users'}} connected
+        </div>
+    </div>
+
+    <div id="canvascontainer" #canvascontainer>
+        <div *ngIf="overlay" class="overlay">
+            <div *ngIf="users.length > 1">
+                The word was: {{currentWord}}
+                <br>
+                The next player is {{nextPlayer}}
+            </div>
+            <div *ngIf="users.length === 1">
+                Waiting for players...
+            </div>
+        </div>
+        <div *ngIf="currentArtist" id="canvas-tools">
+            <button class="iconBtn" (click)="clearCanvas()">
+                <fa-icon [icon]="clearIcon" size="2x"></fa-icon>
+            </button>
+            <button class="iconBtn" (click)="changeColor('black')">
+                <fa-icon [icon]="colorIcon" size="2x" style="color:black"></fa-icon>
+            </button>
+            <button class="iconBtn" (click)="changeColor('blue')">
+                <fa-icon [icon]="colorIcon" size="2x" style="color:blue"></fa-icon>
+            </button>
+            <button class="iconBtn" (click)="changeColor('red')">
+                <fa-icon [icon]="colorIcon" size="2x" style="color:red"></fa-icon>
+            </button>
+            <button class="iconBtn" (click)="changeColor('green')">
+                <fa-icon [icon]="colorIcon" size="2x" style="color:green"></fa-icon>
+            </button>
+            <button class="iconBtn" (click)="changeColor('gold')">
+                <fa-icon [icon]="colorIcon" size="2x" style="color:gold"></fa-icon>
+            </button>
+        </div>
+    </div>
+
+    <div id="chat-container">
+        <div class="messagebox" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <div *ngFor="let message of messages index as i" [ngClass]="{
+                    'chatRelated': message.includes('the game!'),
+                    'correctGuess': message.includes('guessed the word!'),
+                    'wrongGuess': message.includes(':')
+                 }">
+                {{message}}
+            </div>
+        </div>
+        <div>
+            <input [readonly]="currentArtist || isReadOnly" [(ngModel)]="message" (keyup.enter)="sendMessage()"
+                placeholder="Type your guess here" />
+            <button class="btn btn-primary btn-block btn-large" (click)="sendMessage()">Guess</button>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,9 @@ import * as io from 'socket.io-client';
 import { Observable } from 'rxjs';
 
 export class SocketApiService {
-  private url = 'https://serene-anchorage-72495.herokuapp.com/80';
+  private ur = 'https://serene-anchorage-72495.herokuapp.com/80';
+  private url = 'http://localhost:3000';
+  
   private socket;
 
   constructor() {

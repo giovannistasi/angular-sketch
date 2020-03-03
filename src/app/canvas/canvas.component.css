@@ -82,6 +82,10 @@ svg circle {
     
 }
 
+.connected {
+    color: whitesmoke;
+}
+
 .usersbox {
     height: 68vh;
     width: 20vw;
